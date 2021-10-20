@@ -21,4 +21,14 @@ class SSHKeysApi
             default => throw new UnexpectedResponseException()
         };
     }
+
+    public function updateSSHKey(SshKey|string $key, string $name, string $sshKey): void
+    {
+        if(!is_string($key)) {
+            $key = $key->id;
+        }
+        if($this->vultr->makeRequest("ssh-keys/$key", HttpMethod::PATCH, ["name" => $name, "ssh_key" => $sshKey])->responseCode !== 204) {
+            throw new UnexpectedResponseException();
+        }
+    }
 }
