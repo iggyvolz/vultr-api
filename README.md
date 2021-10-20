@@ -149,7 +149,7 @@
 | Create Snapshot from URL                       | X |
 | Get SSH Key                                    | ✓ |
 | Update SSH Key                                 | ✓ |
-| Delete SSH Key                                 | X |
+| Delete SSH Key                                 | ✓ |
 | List SSH Keys                                  | ✓ |
 | Create SSH key                                 | ✓ |
 | Get Startup Script                             | X |

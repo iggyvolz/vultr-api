@@ -52,4 +52,14 @@ class SSHKeysApi
             ]
         );
     }
+
+    public function deleteSSHKey(SshKey|string $key): void
+    {
+        if(!is_string($key)) {
+            $key = $key->id;
+        }
+        if($this->vultr->makeRequest("ssh-keys/$key", HttpMethod::DELETE)->responseCode !== 204) {
+            throw new UnexpectedResponseException();
+        }
+    }
 }
