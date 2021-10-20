@@ -1,0 +1,27 @@
+{
+    "name": "iggyvolz/vultr",
+    "description": "Vultr API client for PHP",
+    "type": "library",
+    "require": {
+        "psr/http-client": "^1.0",
+        "php": "^8.1",
+        "nyholm/psr7": "^1.4",
+        "psr/log": "^3.0"
+    },
+    "require-dev": {
+        "nette/tester": "^2.4",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "license": "0BSD",
+    "autoload": {
+        "psr-4": {
+            "Iggyvolz\\Vultr\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Katie Volz",
+            "email": "iggyvolz@gmail.com"
+        }
+    ]
+}
