@@ -3,6 +3,7 @@
 namespace Iggyvolz\Vultr\SSHKeys;
 
 use Iggyvolz\Vultr\Account\AccountInfo;
+use Iggyvolz\Vultr\Applications\ApplicationList;
 use Iggyvolz\Vultr\HttpMethod;
 use Iggyvolz\Vultr\UnexpectedResponseException;
 use Iggyvolz\Vultr\Vultr;
@@ -17,7 +18,7 @@ class SSHKeysApi
     {
         $response = $this->vultr->makeRequest("ssh-keys", HttpMethod::POST, ["name" => $name, "ssh_key" => $sshKey]);
         return match($response->responseCode) {
-            201 => new SshKey($response->response ?? throw new \RuntimeException()),
+            201 => new SshKey($response->response["ssh_key"] ?? throw new \RuntimeException()),
             default => throw new UnexpectedResponseException()
         };
     }
@@ -36,8 +37,19 @@ class SSHKeysApi
     {
         $response = $this->vultr->makeRequest("ssh-keys/$id", HttpMethod::GET);
         return match($response->responseCode) {
-            200 => new SshKey($response->response ?? throw new \RuntimeException()),
+            200 => new SshKey($response->response["ssh_key"] ?? throw new \RuntimeException()),
             default => throw new UnexpectedResponseException()
         };
+    }
+
+    public function getSSHKeys(int $perPage = 100): SshKeyList
+    {
+        return new SshKeyList(
+            $this->vultr,
+            "ssh-keys",
+            [
+                "per_page" => $perPage
+            ]
+        );
     }
 }

@@ -15,7 +15,7 @@ class AccountApi
     {
         $response = $this->vultr->makeRequest("account", HttpMethod::GET);
         return match($response->responseCode) {
-            200 => new AccountInfo($response->response ?? throw new \RuntimeException()),
+            200 => new AccountInfo($response->response["account"] ?? throw new \RuntimeException()),
             default => throw new UnexpectedResponseException()
         };
     }

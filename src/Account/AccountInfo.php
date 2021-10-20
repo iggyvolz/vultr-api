@@ -18,7 +18,6 @@ class AccountInfo
     public readonly int|float $lastPaymentAmount;
     public function __construct(array $data)
     {
-        $data = Vultr::assertArray($data["account"] ?? null);
         $this->name = Vultr::assertString($data["name"] ?? null);
         $this->email = Vultr::assertString($data["email"] ?? null);
         $this->acls = Vultr::assertStringList($data["acls"] ?? null);

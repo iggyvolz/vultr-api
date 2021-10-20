@@ -150,7 +150,7 @@
 | Get SSH Key                                    | ✓ |
 | Update SSH Key                                 | ✓ |
 | Delete SSH Key                                 | X |
-| List SSH Keys                                  | X |
+| List SSH Keys                                  | ✓ |
 | Create SSH key                                 | ✓ |
 | Get Startup Script                             | X |
 | Delete Startup Script                          | X |
