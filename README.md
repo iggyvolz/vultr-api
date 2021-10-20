@@ -147,7 +147,7 @@
 | List Snapshots                                 | X |
 | Create Snapshot                                | X |
 | Create Snapshot from URL                       | X |
-| Get SSH Key                                    | X |
+| Get SSH Key                                    | ✓ |
 | Update SSH Key                                 | ✓ |
 | Delete SSH Key                                 | X |
 | List SSH Keys                                  | X |

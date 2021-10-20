@@ -31,4 +31,13 @@ class SSHKeysApi
             throw new UnexpectedResponseException();
         }
     }
+
+    public function getSSHKey(string $id): SshKey
+    {
+        $response = $this->vultr->makeRequest("ssh-keys/$id", HttpMethod::GET);
+        return match($response->responseCode) {
+            200 => new SshKey($response->response ?? throw new \RuntimeException()),
+            default => throw new UnexpectedResponseException()
+        };
+    }
 }
